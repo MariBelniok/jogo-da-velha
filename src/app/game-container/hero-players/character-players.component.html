@@ -1,0 +1,11 @@
+<div>
+    <app-character-players-form></app-character-players-form>
+
+    <div *ngIf="players.length > 0" class="hero-content">
+        <div *ngFor="let player of playerHeroes; let i as index" class="hero-card">
+            <h2>Player</h2>
+            <img [src]="player.thumbnailUrl" [alt]="player.name">
+            <p> {{ player.name }} </p>
+        </div>
+    </div>
+</div>

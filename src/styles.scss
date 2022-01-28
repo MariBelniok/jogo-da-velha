@@ -33,10 +33,12 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Bungee Shade', cursive;
+    color: var(--black);
 }
 
 body, input, textarea, select, button {
     font: 400 1rem "Roboto", sans-serif;
+    color: var(--black);
 }
 
 button {
