@@ -19,7 +19,7 @@ export class CharacterPlayersService {
 
   private _playerCharacters = new BehaviorSubject<CharacterModel[]>([]);
   public readonly playerCharacters$: Observable<CharacterModel[]> = this._playerCharacters.asObservable();
-
+  
   constructor(private http: HttpClient) { }
 
   public getMarvelCharacterByName(characterName: string){

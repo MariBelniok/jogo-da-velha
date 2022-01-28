@@ -1,7 +1,14 @@
 <form [formGroup]="form" class="form">
+    <h2>Escolha seu personagem</h2>
     <div class="inputs">
-        <input type="text" formControlName="playerOne">
-        <input type="text" formControlName="playerTwo">
+        <div>
+            <label for="playerOne">Jogador X</label>
+            <input placeholder="Ex: Thor" type="text" formControlName="playerOne" name="playerOne">
+        </div>
+        <div>
+            <label for="playerOne">Jogador O</label>
+            <input placeholder="Ex: Hulk" type="text" formControlName="playerTwo">
+        </div>
+        <button type="button" (click)="onSearchCharacters()"> Buscar </button>
     </div>
-    <button type="button" (click)="onSearchCharacters()"> Buscar Heroi </button>
 </form>

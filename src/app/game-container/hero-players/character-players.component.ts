@@ -9,14 +9,13 @@ import { CharacterModel } from '../models/character.model';
   providers: [CharacterPlayersService]
 })
 export class CharacterPlayersComponent implements OnInit {
-  players = this.characterService.playerCharacters$;
+  players$ = this.characterService.playerCharacters$;
 
   constructor(
     private characterService: CharacterPlayersService
   ) { }
 
   ngOnInit(): void {
-  
   }
 
 }
