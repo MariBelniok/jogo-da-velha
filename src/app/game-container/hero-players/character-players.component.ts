@@ -9,21 +9,14 @@ import { CharacterModel } from '../models/character.model';
   providers: [CharacterPlayersService]
 })
 export class CharacterPlayersComponent implements OnInit {
-  players: CharacterModel[] = {} as CharacterModel[];
+  players = this.characterService.playerCharacters$;
 
   constructor(
     private characterService: CharacterPlayersService
   ) { }
 
   ngOnInit(): void {
-    this.characterService.playerCharacters$
-      .subscribe(characters => {
-        if ( characters ) {
-          this.players = characters;
-
-          console.log(this.players)
-        }
-      })
+  
   }
 
 }

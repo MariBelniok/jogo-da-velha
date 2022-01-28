@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { switchMap, takeUntil } from 'rxjs/operators';
 import { CharacterPlayersService } from '../characters-players.service';
 
 @Component({
@@ -28,13 +28,14 @@ export class CharacterPlayersFormComponent implements OnInit, OnDestroy {
   onSearchCharacters(): void {
     const searchCharacters: string[] = [this.form.value.playerOne, this.form.value.playerTwo]
 
-    for (const character of searchCharacters) {
-      this.characterService.getMarvelCharacterByName(character)
+    this.characterService.getMarvelCharacterByName(searchCharacters[0])
       .pipe(
-        takeUntil(this.destroy$)
+        takeUntil(this.destroy$),
+        switchMap(() => {
+          return this.characterService.getMarvelCharacterByName(searchCharacters[1])
+        })
       )
       .subscribe();
-    }
   }
 
   ngOnDestroy(): void {
