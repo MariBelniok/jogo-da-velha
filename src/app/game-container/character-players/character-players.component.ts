@@ -15,9 +15,9 @@ import { takeUntil } from 'rxjs/operators';
 export class CharacterPlayersComponent implements OnInit, OnDestroy {
   score: GameScoreModel = {} as GameScoreModel;
   destroy$: Subject<boolean> = new Subject<boolean>();
-
+  isXturn: boolean;
   
-  @Input() set gameScore(value: GameScoreModel){
+  @Input() set gameScore(value: GameScoreModel) {
     this.score = value;
   }
 

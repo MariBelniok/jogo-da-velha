@@ -1,4 +1,6 @@
 .form {
+    max-width: 600px;
+    margin: 0.5rem auto;
 
     h3 {
         font-size: 1.5rem;
@@ -49,6 +51,7 @@
         background-color: var(--yellow);
 
         font-size: 1.2rem;
+        font-family: 'Press Start 2P', cursive;
 
         transition: filter 0.2s;
 

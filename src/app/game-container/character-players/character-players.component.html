@@ -1,16 +1,23 @@
-<div class="hero-content">
-    <div *ngFor="let player of players; let i = index" >
-        <div class="hero-card" *ngIf="players.length > 1">
-            <h2>Player {{ player.player }}</h2>
-            <img [src]="player.thumbnailUrl" [alt]="player.name">
-            <p> {{ player.name }} </p>
-            <div [ngSwitch]="player.player">
-                <p *ngSwitchCase="'X'"> Pontos: {{ score.playerX }} </p>
-                <p *ngSwitchCase="'O'"> Pontos: {{ score.playerO }} </p>
-            </div>
-        </div>
-    </div>
-    
-    <app-character-players-form *ngIf="players.length < 2"></app-character-players-form>
-</div>
+<app-character-players-form *ngIf="players.length < 2"></app-character-players-form>
 
+<div class="score-container" *ngIf="players.length > 1">
+    <header> PLACAR </header>
+
+    <section class="characters-content">
+        <div class="characters-card">
+            <h2> {{ players[0].name }} </h2>
+            <img class="playerX" [src]="players[0].thumbnailUrl" [alt]="players[0].name">
+            <p> <span> > </span> Sua vez </p>
+        </div>
+
+        <span class="score">
+            {{ score.playerX }} vs {{ score.playerO }}
+        </span>
+
+        <div class="characters-card">
+            <h2> {{ players[1].name }} </h2>
+            <img class="playerO" [src]="players[1].thumbnailUrl" [alt]="players[1].name">
+            <p> <span> > </span> Sua vez </p>
+        </div>
+    </section>    
+</div>

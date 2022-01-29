@@ -41,10 +41,16 @@ export class CharacterPlayersService {
     .pipe(
       take(1),
       tap(res => {
-        if (res.data.results[0].length == 0)
+        if (res.data.results[0].length == 0) {
           throw new Error;
+        }
       }),
       catchError((err: HttpErrorResponse) => {
+        const characters: CharacterModel[] = this._playerCharacters.getValue();
+        if (characters) {
+          this._playerCharacters.next([])
+        }
+
         console.log(err.message)
         this.dialog.open(InformationDialogComponent, {
           data: {
