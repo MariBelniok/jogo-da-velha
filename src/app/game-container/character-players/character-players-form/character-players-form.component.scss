@@ -1,21 +1,26 @@
 .form {
     max-width: 600px;
-    margin: 0.5rem auto;
+    margin: 2rem auto;
+    padding: 4rem;
+    border: 1px solid var(--gray-400);
 
     h3 {
         font-size: 1.5rem;
         line-height: 2rem;
+        text-align: center;
 
         span {
             background-color: var(--black);
             color: var(--red);
-            padding: 0.2rem;
+            padding: 0.3rem;
+            border-radius: 4px;
         }
     }
 
     p {
         font-size: 1.1rem;
-        padding-bottom: 2rem;
+        padding: 1rem 0;
+        text-align: center;
     }
 
     .inputs {
