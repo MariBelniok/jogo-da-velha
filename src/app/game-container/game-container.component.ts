@@ -9,12 +9,15 @@ import { GameScoreModel } from './models/game-score.model';
 })
 export class GameContainerComponent implements OnInit {
   gameScore: GameScoreModel = {} as GameScoreModel;
+  playersReady$ = this.containerService.playersReady$;
 
   constructor(private containerService: GameContainerService) { }
 
   ngOnInit(): void {
     this.containerService.gameScore$
       .subscribe(scores => this.gameScore = scores);
+
+    
   }
 
   onRoundWinner(winner: string) {

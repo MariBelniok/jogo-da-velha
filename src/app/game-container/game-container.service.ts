@@ -12,6 +12,9 @@ export class GameContainerService {
   } as GameScoreModel);
   public readonly gameScore$: Observable<GameScoreModel> = this._gameScore.asObservable();
 
+  private _playersReady = new BehaviorSubject<boolean>(false);
+  public readonly playersReady$: Observable<boolean> = this._playersReady.asObservable();
+
   constructor() { }
 
   public roundWinner(winner: string): void {
@@ -32,5 +35,9 @@ export class GameContainerService {
     this._gameScore.next(gameScore)
 
     console.log(this._gameScore.getValue())
+  }
+
+  public setPlayersReady() {
+    this._playersReady.next(true);
   }
 }

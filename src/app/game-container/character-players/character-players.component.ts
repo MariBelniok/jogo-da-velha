@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CharacterPlayersService } from './characters-players.service';
 import { CharacterModel } from '../models/character.model';
 import { GameScoreModel } from '../models/game-score.model';
+import { GameContainerService } from '../game-container.service';
 
 @Component({
   selector: 'app-character-players',
@@ -19,14 +20,19 @@ export class CharacterPlayersComponent implements OnInit {
   players: CharacterModel[];
 
   constructor(
-    private characterService: CharacterPlayersService
+    private characterService: CharacterPlayersService,
+    private containerService: GameContainerService
   ) { }
 
   ngOnInit(): void {
-    console.log(this.score)
-
     this.characterService.playerCharacters$
-      .subscribe(char => this.players = char)
+      .subscribe(char => {
+        this.players = char
+        
+        if (this.players.length === 2){
+          this.containerService.setPlayersReady();
+        }
+      })
   }
 
 }

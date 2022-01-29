@@ -1,4 +1,9 @@
 <div>
-    <app-character-players [gameScore]="gameScore"></app-character-players>
-    <app-game-board (roundWinner)="onRoundWinner($event)"></app-game-board>
+    <app-character-players 
+        [gameScore]="gameScore"
+    ></app-character-players>
+    <app-game-board 
+        *ngIf="playersReady$ | async"
+        (roundWinner)="onRoundWinner($event)"
+    ></app-game-board>
 </div>
