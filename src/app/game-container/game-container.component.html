@@ -3,11 +3,7 @@
         [gameScore]="gameScore"
     ></app-character-players>
     <app-game-board 
-        (roundWinner)="onRoundWinner($event)"
-    ></app-game-board>
-    <!-- <app-game-board 
         *ngIf="playersReady$ | async"
         (roundWinner)="onRoundWinner($event)"
-        (isXTurn)="isXTurn($event)"
-    ></app-game-board> -->
+    ></app-game-board>
 </div>
