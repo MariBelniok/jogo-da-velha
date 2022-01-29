@@ -15,6 +15,9 @@ export class GameContainerService {
   private _playersReady = new BehaviorSubject<boolean>(false);
   public readonly playersReady$: Observable<boolean> = this._playersReady.asObservable();
 
+  private _isPlayerXTurn = new BehaviorSubject<boolean>(true);
+  public readonly isPlayerXTurn$: Observable<boolean> = this._isPlayerXTurn.asObservable();
+
   constructor() { }
 
   public roundWinner(winner: string): void {
@@ -40,4 +43,10 @@ export class GameContainerService {
   public setPlayersReady() {
     this._playersReady.next(true);
   }
+
+  public setIsPlayerXTurn(value: boolean) {
+    this._isPlayerXTurn.next(value);
+  }
+
+
 }

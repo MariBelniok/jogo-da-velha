@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { GameContainerService } from '../game-container.service';
 
 @Component({
   selector: 'app-game-board',
@@ -13,7 +14,7 @@ export class GameBoardComponent implements OnInit {
   currentPlayerIsX: boolean;
   movesCounter: number;
 
-  constructor() { }
+  constructor(private containerService: GameContainerService) { }
 
   ngOnInit(): void {
     this.startNewGame()
@@ -24,6 +25,8 @@ export class GameBoardComponent implements OnInit {
     this.currentPlayerIsX = true;
     this.winner = null;
     this.movesCounter = 0;
+    this.containerService.setIsPlayerXTurn(this.currentPlayerIsX);
+
   }
 
   markSpace(index: number) {
@@ -32,6 +35,8 @@ export class GameBoardComponent implements OnInit {
 
       this.currentPlayerIsX = !this.currentPlayerIsX;
       this.movesCounter += 1;
+
+      this.containerService.setIsPlayerXTurn(this.currentPlayerIsX);
     }
 
     const winner = this.checkForWinner();

@@ -40,6 +40,12 @@ export class CharacterPlayersComponent implements OnInit, OnDestroy {
           this.containerService.setPlayersReady();
         }
       })
+
+    this.containerService.isPlayerXTurn$
+      .pipe(
+        takeUntil(this.destroy$),
+      )
+      .subscribe(value => this.isXturn = value);
   }
 
   ngOnDestroy(): void {
