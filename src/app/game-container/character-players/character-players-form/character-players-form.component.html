@@ -1,17 +1,17 @@
 <form [formGroup]="form" class="form">
 
-    <h3>Bem vindo ao confronto dos personagens da Marvel</h3>
-    <p>Escolha seu personagem favorito para iniciar o jogo!</p>
+    <h3>Bem vindo ao confronto dos personagens da <span>MARVEL</span>   !</h3>
+    <p>Escolha seu personagem favorito para iniciar o jogo: </p>
 
     <div class="inputs">
         <div>
-            <label for="playerOne">Primeiro a jogar</label>
+            <label for="playerOne">1º Personagem: </label>
             <input placeholder="Ex: Thor" type="text" formControlName="playerOne" name="playerOne">
         </div>
         <div>
-            <label for="playerOne">Segundo a jogar</label>
-            <input placeholder="Ex: Hulk" type="text" formControlName="playerTwo">
+            <label for="playerTwo">2º Personagem: </label>
+            <input placeholder="Ex: Hulk" type="text" formControlName="playerTwo" name="playerTwo">
         </div>
     </div>
-    <button type="button" (click)="onSearchCharacters()"> Buscar </button>
+    <button type="button" (click)="onSearchCharacters()"> Buscar Personagens </button>
 </form>

@@ -10,8 +10,8 @@ import { CharacterPlayersService } from '../characters-players.service';
   styleUrls: ['./character-players-form.component.scss']
 })
 export class CharacterPlayersFormComponent implements OnInit, OnDestroy {
-  destroy$: Subject<boolean> = new Subject<boolean>();
   form: FormGroup;
+  destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(
     private formBuilder: FormBuilder,
