@@ -1,4 +1,4 @@
-<form [formGroup]="form" class="form">
+<form [formGroup]="form" name="form" class="form">
 
     <h3>Bem vindo ao confronto dos personagens da <span>MARVEL</span>   !</h3>
     <p>Escolha seu personagem favorito para iniciar o jogo: </p>
@@ -13,5 +13,5 @@
             <input placeholder="Ex: Hulk" type="text" formControlName="playerTwo" name="playerTwo">
         </div>
     </div>
-    <button type="button" (click)="onSearchCharacters()"> Buscar Personagens </button>
+    <button type="button" (click)="onStartGame()"> Começar Jogo </button>
 </form>

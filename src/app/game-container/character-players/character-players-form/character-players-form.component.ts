@@ -25,10 +25,18 @@ export class CharacterPlayersFormComponent implements OnInit, OnDestroy {
     })
   }
 
-  onSearchCharacters(): void {
-    const playerX = this.form.value.playerOne;
-    const playerO = this.form.value.playerTwo;
+  onStartGame() {
+    this.chooseRandomCharacters();
+  }
 
+  chooseRandomCharacters() {
+    const playerX = Math.random() > 0.5 ? this.form.value.playerOne : this.form.value.playerTwo;
+    const playerO = playerX === this.form.value.playerOne ? this.form.value.playerTwo : this.form.value.playerOne ;
+
+    this.searchCharacters(playerX, playerO);
+  }
+
+  searchCharacters(playerX: string, playerO: string): void {
     this.characterService.getMarvelCharacterByName(playerX)
       .pipe(
         takeUntil(this.destroy$),
