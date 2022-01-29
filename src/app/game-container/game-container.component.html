@@ -1,4 +1,4 @@
 <div>
-    <app-character-players></app-character-players>
-    <app-game-board></app-game-board>
+    <app-character-players [gameScore]="gameScore"></app-character-players>
+    <app-game-board (roundWinner)="onRoundWinner($event)"></app-game-board>
 </div>

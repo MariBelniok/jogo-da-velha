@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-game-board',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game-board.component.scss']
 })
 export class GameBoardComponent implements OnInit {
+  @Output() roundWinner = new EventEmitter< 'X' | 'O' | 'TIE' >();
+
   gameBoardSpaces = new Array(9);
   winner: 'X' | 'O' | 'Tie';
   currentPlayerIsX: boolean;
@@ -32,7 +34,13 @@ export class GameBoardComponent implements OnInit {
       this.movesCounter += 1;
     }
 
-    this.checkForWinner();
+    const winner = this.checkForWinner();
+
+    if (winner) {
+      this.roundWinner.emit(winner);
+
+      this.startNewGame();
+    }
   }
 
   checkForWinner() {
@@ -64,8 +72,6 @@ export class GameBoardComponent implements OnInit {
         winner = 'TIE';
       }
     }
-
-    console.log("winner: ", winner)
 
     return winner;
   }

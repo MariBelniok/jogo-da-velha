@@ -38,6 +38,7 @@ export class CharacterPlayersService {
         const characters: CharacterModel[] = this._playerCharacters.getValue();
         
         const newCharacter: CharacterModel = {
+          player: characters.length == 0 ? 'X' : 'O',
           name: character.data.results[0].name,
           thumbnailUrl: character.data.results[0].thumbnail.path + '.' + character.data.results[0].thumbnail.extension
         } 

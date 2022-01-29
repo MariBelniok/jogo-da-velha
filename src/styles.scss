@@ -31,12 +31,12 @@ body {
     color: var(--white);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2 {
     font-family: 'Bungee Shade', cursive;
     color: var(--black);
 }
 
-body, input, textarea, select, button {
+body, input, textarea, select, button, h3 {
     font: 400 1rem "Roboto", sans-serif;
     color: var(--black);
 }

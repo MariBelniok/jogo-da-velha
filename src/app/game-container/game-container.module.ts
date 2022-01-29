@@ -5,9 +5,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { GameContainerComponent } from './game-container.component';
 import { GameBoardComponent } from './game-board/game-board.component';
-import { CharacterPlayersComponent } from './hero-players/character-players.component';
-import { CharacterPlayersFormComponent } from './hero-players/hero-players-form/character-players-form.component';
-
+import { CharacterPlayersComponent } from './character-players/character-players.component';
+import { CharacterPlayersFormComponent } from './character-players/character-players-form/character-players-form.component';
+import { GameContainerService } from './game-container.service';
 @NgModule({
   declarations: [
     GameContainerComponent,
@@ -26,6 +26,9 @@ import { CharacterPlayersFormComponent } from './hero-players/hero-players-form/
     GameBoardComponent,
     CharacterPlayersComponent,
     CharacterPlayersFormComponent
+  ],
+  providers: [
+    GameContainerService
   ]
 })
 

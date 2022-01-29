@@ -1,0 +1,16 @@
+<div class="hero-content">
+    <div *ngFor="let player of players; let i = index" >
+        <div class="hero-card">
+            <h2>Player {{ player.player }}</h2>
+            <img [src]="player.thumbnailUrl" [alt]="player.name">
+            <p> {{ player.name }} </p>
+            <div [ngSwitch]="player.player">
+                <p *ngSwitchCase="'X'"> Pontos: {{ score.playerX }} </p>
+                <p *ngSwitchCase="'O'"> Pontos: {{ score.playerO }} </p>
+            </div>
+        </div>
+    </div>
+    
+    <app-character-players-form *ngIf="players.length == 0"></app-character-players-form>
+</div>
+

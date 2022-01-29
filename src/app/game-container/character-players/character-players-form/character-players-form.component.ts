@@ -26,13 +26,14 @@ export class CharacterPlayersFormComponent implements OnInit, OnDestroy {
   }
 
   onSearchCharacters(): void {
-    const searchCharacters: string[] = [this.form.value.playerOne, this.form.value.playerTwo]
+    const playerX = this.form.value.playerOne;
+    const playerO = this.form.value.playerTwo;
 
-    this.characterService.getMarvelCharacterByName(searchCharacters[0])
+    this.characterService.getMarvelCharacterByName(playerX)
       .pipe(
         takeUntil(this.destroy$),
         switchMap(() => {
-          return this.characterService.getMarvelCharacterByName(searchCharacters[1])
+          return this.characterService.getMarvelCharacterByName(playerO)
         })
       )
       .subscribe();
