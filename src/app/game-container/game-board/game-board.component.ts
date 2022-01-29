@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { interval } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { GameContainerService } from '../game-container.service';
 
 @Component({
@@ -44,7 +46,13 @@ export class GameBoardComponent implements OnInit {
     if (winner) {
       this.roundWinner.emit(winner);
 
-      this.startNewGame();
+      const interval$ = interval(1000);
+
+      interval$
+        .pipe(
+          take(1)
+        )
+        .subscribe(() => this.startNewGame());
     }
   }
 
