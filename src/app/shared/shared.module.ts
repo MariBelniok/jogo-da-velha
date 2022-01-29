@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DialogComponent } from '../shared/dialog/dialog.component';
+import { InformationDialogComponent } from '../shared/dialog/information-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
-    DialogComponent
+    InformationDialogComponent
   ],
   imports: [
     CommonModule,
+    MatDialogModule
   ],
   exports: [
-    DialogComponent,
+    InformationDialogComponent,
+    MatDialogModule
   ]
 })
 

@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { MatDialog } from '@angular/material/dialog';
+
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { catchError, filter, map, take, tap } from 'rxjs/operators';
+
 import { Md5 } from 'ts-md5/dist/md5';
-import { delay, map, take, tap } from 'rxjs/operators';
 
 import { MarvelApiResponse } from '../models/marvel-api-response.model';
 import { CharacterModel } from '../models/character.model';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { InformationDialogComponent } from 'src/app/shared/dialog/information-dialog.component';
 
 const  API_URL = 'https://gateway.marvel.com:443/v1/public';
 
@@ -20,7 +24,10 @@ export class CharacterPlayersService {
   private _playerCharacters = new BehaviorSubject<CharacterModel[]>([]);
   public readonly playerCharacters$: Observable<CharacterModel[]> = this._playerCharacters.asObservable();
   
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private dialog: MatDialog  
+  ) { }
 
   public getMarvelCharacterByName(characterName: string){
     return this.http.get<MarvelApiResponse>(`${API_URL}/characters`, {
@@ -32,8 +39,23 @@ export class CharacterPlayersService {
       }
     })
     .pipe(
-      delay(2000),
       take(1),
+      tap(res => {
+        if (res.data.results[0].length == 0)
+          throw new Error;
+      }),
+      catchError((err: HttpErrorResponse) => {
+        console.log(err.message)
+        this.dialog.open(InformationDialogComponent, {
+          data: {
+            message: "Ocorreu um erro ao buscar os personagens, por favor, revise os nomes escolhidos e tente novamente!", 
+            buttonText: "Tentar Novamente"
+          }
+        })
+
+        return of(null)
+      }),
+      filter(res => res !== null),
       tap((character: MarvelApiResponse) => {
         const characters: CharacterModel[] = this._playerCharacters.getValue();
         
