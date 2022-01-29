@@ -8,6 +8,8 @@ import { GameBoardComponent } from './game-board/game-board.component';
 import { CharacterPlayersComponent } from './character-players/character-players.component';
 import { CharacterPlayersFormComponent } from './character-players/character-players-form/character-players-form.component';
 import { GameContainerService } from './game-container.service';
+import { SharedModule } from '../shared/shared.module';
+
 @NgModule({
   declarations: [
     GameContainerComponent,
@@ -19,7 +21,7 @@ import { GameContainerService } from './game-container.service';
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-
+    SharedModule
   ],
   exports: [
     GameContainerComponent,
