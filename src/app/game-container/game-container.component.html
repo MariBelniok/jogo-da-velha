@@ -2,10 +2,7 @@
     <app-character-players 
         [gameScore]="gameScore"
     ></app-character-players>
-    <!-- <app-game-board 
-        *ngIf="playersReady$ | async"
-    ></app-game-board> -->
-
     <app-game-board 
+        *ngIf="playersReady$ | async"
     ></app-game-board>
 </div>
