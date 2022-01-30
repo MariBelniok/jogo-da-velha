@@ -4,6 +4,10 @@
     padding: 4rem;
     border: 1px solid var(--gray-400);
 
+    @media screen and (max-width: 720px) {
+        max-width: 350px;
+    }
+
     h3 {
         font-size: 1.5rem;
         line-height: 2rem;

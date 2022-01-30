@@ -24,10 +24,6 @@ export class GameContainerComponent implements OnInit, OnDestroy {
       .subscribe(scores => this.gameScore = scores);
   }
 
-  onRoundWinner(winner: string) {
-    this.containerService.roundWinner(winner);
-  }
-
   ngOnDestroy(): void {
     this.destroy$.next(true);
     this.destroy$.unsubscribe();

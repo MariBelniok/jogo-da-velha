@@ -1,10 +1,13 @@
 <div class="board-spaces">
+    <div class="showWinner" *ngIf="winner">
+        <p *ngIf="winner == 'X' || winner == 'O'"> O vencedor é: <span> {{ winner }} </span></p>
+        <p *ngIf="winner == 'Tie'"> Empate! </p>
+        <button (click)="onPlayAgain()">PLAY AGAIN</button>
+    </div>
 
     <div *ngFor="let space of gameBoardSpaces; let i = index" (click)="markSpace(i)">
-
-        <button>
-            {{ space }}
-        </button>
-
+        <div class="space">
+             {{ space }}
+        </div>
     </div>
 </div>
