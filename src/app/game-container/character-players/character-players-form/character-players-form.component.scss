@@ -48,6 +48,11 @@
                 font-size: .9rem;
             }
         }
+
+        .input-error {
+            font-size: 0.8rem;
+            color: var(--red);
+        }
     }
 
     button {

@@ -20,8 +20,8 @@ export class CharacterPlayersFormComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      playerOne: [null, [Validators.required]],
-      playerTwo: [null, [Validators.required]]
+      playerOne: [null, [Validators.required, Validators.minLength(1), Validators.maxLength(20)]],
+      playerTwo: [null, [Validators.required, Validators.minLength(1), Validators.maxLength(20)]]
     })
   }
 
@@ -32,7 +32,7 @@ export class CharacterPlayersFormComponent implements OnInit, OnDestroy {
   chooseRandomCharacters() {
     const playerX = Math.random() > 0.5 ? this.form.value.playerOne : this.form.value.playerTwo;
     const playerO = playerX === this.form.value.playerOne ? this.form.value.playerTwo : this.form.value.playerOne ;
-
+  
     this.searchCharacters(playerX, playerO);
   }
 
