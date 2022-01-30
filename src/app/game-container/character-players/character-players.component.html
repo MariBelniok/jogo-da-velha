@@ -7,6 +7,7 @@
         <div class="characters-card">
             <h2> {{ players[0].name }} </h2>
             <img class="playerX" [src]="players[0].thumbnailUrl" [alt]="players[0].name">
+            <h3> X </h3>
             <p *ngIf="isXturn"> > Sua vez </p>
         </div>
 
@@ -17,6 +18,7 @@
         <div class="characters-card">
             <h2> {{ players[1].name }} </h2>
             <img class="playerO" [src]="players[1].thumbnailUrl" [alt]="players[1].name">
+            <h3> O </h3>
             <p *ngIf="!isXturn"> > Sua vez </p>
         </div>
     </section>    

@@ -36,8 +36,6 @@ export class GameContainerService {
     }
 
     this._gameScore.next(gameScore)
-
-    console.log(this._gameScore.getValue())
   }
 
   public setPlayersReady() {
