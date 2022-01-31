@@ -41,14 +41,16 @@
         left: 0px;
         bottom: 0px;
 
-        background-color: rgba($color: #000, $alpha: 0.8);
+        background-color: rgba($color: #FFF, $alpha: 0.8);
 
         text-align: center;
-        color: var(--white);
+        color: var(--black);
 
         display: flex;
         flex-direction: column;
         justify-content: center;
+
+        animation: horizontalSlide 1s ease-in;
 
         p {
             font-size: 2.5rem;
@@ -76,5 +78,14 @@
             max-width: 200px;
             margin: 0 auto;
         }
+
+        @keyframes horizontalSlide {
+            0% {
+                transform: translateX(-200px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
     }
-}
+    }
