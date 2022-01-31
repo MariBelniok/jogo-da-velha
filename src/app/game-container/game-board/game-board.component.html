@@ -7,7 +7,8 @@
 
     <div *ngFor="let space of gameBoardSpaces; let i = index" (click)="markSpace(i)">
         <div class="space">
-             {{ space }}
+             <span *ngIf="space == 'X'" appStringColorChange inputColor="var(--blue)">{{ space }}</span>
+             <span *ngIf="space == 'O'" appStringColorChange inputColor="var(--yellow)">{{ space }}</span>
         </div>
     </div>
 </div>
