@@ -41,33 +41,36 @@ export class GameBoardComponent implements OnInit {
 
   checkForWinner() {
     const possibleIndexCombinations = [
-      [0, 3, 6],
-      [1, 4, 7],
-      [2, 5, 8],
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-      [0, 4, 8],
-      [2, 4, 6],
+      { index1: 0, index2: 3, index3: 6 },
+      { index1: 1, index2: 4, index3: 7 },
+      { index1: 2, index2: 5, index3: 8 },
+      { index1: 0, index2: 1, index3: 2 },
+      { index1: 3, index2: 4, index3: 5 },
+      { index1: 6, index2: 7, index3: 8 },
+      { index1: 0, index2: 4, index3: 8 },
+      { index1: 2, index2: 4, index3: 6 },
     ];
 
     for (let combination of possibleIndexCombinations) {
-      const [column1, column2, column3] = combination;
+      const { index1, index2, index3 } = combination;
+      this.matchValues(index1, index2, index3);
+    }
 
-      if (
-        this.gameBoardSpaces[column1] &&
-        this.gameBoardSpaces[column1] === this.gameBoardSpaces[column2] &&
-        this.gameBoardSpaces[column1] === this.gameBoardSpaces[column3]
-      ) {
+    this.containerService.roundWinner(this.winner);
+  }
+
+  matchValues(index1: number, index2: number, index3: number) {
+    if (
+      this.gameBoardSpaces[index1] &&
+      this.gameBoardSpaces[index1] == this.gameBoardSpaces[index2] &&
+      this.gameBoardSpaces[index1] == this.gameBoardSpaces[index3]
+    ) {
         this.winner = !this.currentPlayerIsX ? 'X' : 'O';
       }
 
       if (this.movesCounter > 8 && !this.winner) {
         this.winner = 'Tie';
       }
-    }
-
-    this.containerService.roundWinner(this.winner);
   }
 
   onPlayAgain(){
