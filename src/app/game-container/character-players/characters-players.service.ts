@@ -7,11 +7,12 @@ import { catchError, filter, map, take, tap } from 'rxjs/operators';
 
 import { Md5 } from 'ts-md5/dist/md5';
 
+import { environment } from '../../../environments/environment.local';
 import { MarvelApiResponse } from '../models/marvel-api-response.model';
 import { CharacterModel } from '../models/character.model';
-import { InformationDialogComponent } from 'src/app/shared/dialog/information-dialog.component';
+import { InformationDialogComponent } from '../../shared/dialog/information-dialog.component';
 
-const  API_URL = 'https://gateway.marvel.com:443/v1/public';
+const  API_URL = environment.marvelApi;
 
 @Injectable()
 export class CharacterPlayersService {
