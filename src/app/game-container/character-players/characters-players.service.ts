@@ -16,8 +16,8 @@ const  API_URL = environment.marvelApi;
 
 @Injectable()
 export class CharacterPlayersService {
-  private apikey = 'bde7cb6e618f0eb227634270fb416159';
-  private privatekey = 'a3808342d7c27585b4e4c849ef35d30127450595';
+  private apikey = environment.PUBLIC_API_KEY;
+  private privatekey = environment.PRIVATE_API_KEY;
   private ts = Number(new Date()).toString();
 
   private hash = Md5.hashStr(this.ts + this.privatekey + this.apikey);
