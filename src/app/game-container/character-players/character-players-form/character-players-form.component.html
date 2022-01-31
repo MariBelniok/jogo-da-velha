@@ -1,23 +1,30 @@
+
 <form [formGroup]="form" name="form" class="form">
-
-    <h3>Bem vindo ao confronto dos personagens da <span>MARVEL</span>   !</h3>
-    <p>Escolha seu personagem favorito para iniciar o jogo: </p>
-
-    <div class="inputs">
-        <div>
-            <label for="playerOne">1º Personagem: </label>
-            <input placeholder="Ex: Thor" type="text" id="playerOne" formControlName="playerOne" name="playerOne">
-            <span *ngIf="!form.get('playerOne').valid && (form.get('playerOne').dirty || form.get('playerOne').touched)" class="input-error">
-                Escolha um personagem!
-            </span>
-        </div>
-        <div>
-            <label for="playerTwo">2º Personagem: </label>
-            <input placeholder="Ex: Hulk" type="text" formControlName="playerTwo" name="playerTwo">
-            <span *ngIf="!form.get('playerTwo').valid && (form.get('playerTwo').dirty || form.get('playerTwo').touched)" class="input-error">
-                Escolha um personagem!
-            </span>
-        </div>
+    <div *ngIf="loadingCharacters" class="loading-characters">
+        Buscando Personagens
     </div>
-    <button type="button" (click)="onStartGame()" [disabled]="!form.valid"> START </button>
+
+    <div *ngIf="!loadingCharacters">  
+        <h3>Bem vindo ao confronto dos personagens da <span>MARVEL</span>   !</h3>
+        <p>Escolha seu personagem favorito para iniciar o jogo: </p>
+    
+        <div class="inputs">
+            <div>
+                <label for="playerOne">1º Personagem: </label>
+                <input placeholder="Ex: Thor" type="text" id="playerOne" formControlName="playerOne" name="playerOne">
+                <span *ngIf="!form.get('playerOne').valid && (form.get('playerOne').dirty || form.get('playerOne').touched)" class="input-error">
+                    Escolha um personagem!
+                </span>
+            </div>
+            <div>
+                <label for="playerTwo">2º Personagem: </label>
+                <input placeholder="Ex: Hulk" type="text" formControlName="playerTwo" name="playerTwo">
+                <span *ngIf="!form.get('playerTwo').valid && (form.get('playerTwo').dirty || form.get('playerTwo').touched)" class="input-error">
+                    Escolha um personagem!
+                </span>
+            </div>
+        </div>
+    
+        <button type="button" (click)="onStartGame()" [disabled]="!form.valid"> START </button>
+    </div>
 </form>

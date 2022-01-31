@@ -73,4 +73,33 @@
             filter: brightness(0.8);
         }
     }
+
+    .loading-characters {
+        display: flex;
+        justify-content:center;
+        align-items: center;
+
+        font-size: 1.3rem;
+        font-family: 'Press Start 2P', cursive;
+
+        &::after {
+            content: '';
+
+            animation: loading 2s infinite;
+        }
+
+        @keyframes loading {
+            0% {
+                content: '.';
+            }
+
+            50% {
+                content: '..';
+            }
+
+            100% {
+                content: '...';
+            }
+        }
+    }
 }

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { switchMap, takeUntil } from 'rxjs/operators';
+import { finalize, switchMap, takeUntil } from 'rxjs/operators';
 import { CharacterPlayersService } from '../characters-players.service';
 
 @Component({
@@ -12,6 +12,7 @@ import { CharacterPlayersService } from '../characters-players.service';
 export class CharacterPlayersFormComponent implements OnInit, OnDestroy {
   form: FormGroup;
   destroy$: Subject<boolean> = new Subject<boolean>();
+  loadingCharacters: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,6 +27,7 @@ export class CharacterPlayersFormComponent implements OnInit, OnDestroy {
   }
 
   onStartGame() {
+    this.loadingCharacters = true;
     this.chooseRandomCharacters();
   }
 
@@ -42,7 +44,8 @@ export class CharacterPlayersFormComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$),
         switchMap(() => {
           return this.characterService.getMarvelCharacterByName(playerO)
-        })
+        }),
+        finalize(() => this.loadingCharacters = false)
       )
       .subscribe();
   }
