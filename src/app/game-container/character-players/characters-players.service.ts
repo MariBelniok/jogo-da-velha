@@ -12,7 +12,7 @@ import { MarvelApiResponse } from '../models/marvel-api-response.model';
 import { CharacterModel } from '../models/character.model';
 import { InformationDialogComponent } from '../../shared/dialog/information-dialog.component';
 
-const  API_URL = environment.marvelApi;
+const API_URL = environment.marvelApi;
 
 @Injectable()
 export class CharacterPlayersService {
@@ -24,10 +24,10 @@ export class CharacterPlayersService {
 
   private _playerCharacters = new BehaviorSubject<CharacterModel[]>([]);
   public readonly playerCharacters$: Observable<CharacterModel[]> = this._playerCharacters.asObservable();
-  
+
   constructor(
     private http: HttpClient,
-    private dialog: MatDialog  
+    private dialog: MatDialog
   ) { }
 
   public getMarvelCharacterByName(characterName: string){
@@ -55,7 +55,7 @@ export class CharacterPlayersService {
         console.log(err.message)
         this.dialog.open(InformationDialogComponent, {
           data: {
-            message: "Ocorreu um erro ao buscar os personagens, por favor, revise os nomes escolhidos e tente novamente!", 
+            message: "Ocorreu um erro ao buscar os personagens, por favor, revise os nomes escolhidos e tente novamente!",
             buttonText: "Tentar Novamente"
           }
         })
@@ -65,15 +65,15 @@ export class CharacterPlayersService {
       filter(res => res !== null),
       tap((character: MarvelApiResponse) => {
         const characters: CharacterModel[] = this._playerCharacters.getValue();
-        
+
         const newCharacter: CharacterModel = {
           player: characters.length == 0 ? 'X' : 'O',
           name: character.data.results[0].name,
           thumbnailUrl: character.data.results[0].thumbnail.path + '.' + character.data.results[0].thumbnail.extension
-        } 
+        }
 
         characters.push(newCharacter);
-        
+
         this._playerCharacters.next([...characters]);
       })
       )

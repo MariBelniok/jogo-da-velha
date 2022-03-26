@@ -65,12 +65,12 @@ export class GameBoardComponent implements OnInit {
       this.gameBoardSpaces[index1] == this.gameBoardSpaces[index2] &&
       this.gameBoardSpaces[index1] == this.gameBoardSpaces[index3]
     ) {
-        this.winner = !this.currentPlayerIsX ? 'X' : 'O';
-      }
+      this.winner = !this.currentPlayerIsX ? 'X' : 'O';
+    }
 
-      if (this.movesCounter > 8 && !this.winner) {
-        this.winner = 'Tie';
-      }
+    if (this.movesCounter > 8 && !this.winner) {
+      this.winner = 'Tie';
+    }
   }
 
   onPlayAgain(){
