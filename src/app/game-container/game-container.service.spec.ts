@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { GameContainerService } from './game-container.service';
 
-fdescribe('GameContainerService', () => {
+describe('GameContainerService', () => {
   let serviceSpy: jasmine.SpyObj<GameContainerService>;
 
   beforeEach(() => {
