@@ -1,14 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { GameContainerService } from '../game-container.service';
 
 import { GameBoardComponent } from './game-board.component';
 
-describe('GameBoardComponent', () => {
+fdescribe('GameBoardComponent', () => {
   let component: GameBoardComponent;
   let fixture: ComponentFixture<GameBoardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GameBoardComponent ]
+      declarations: [ GameBoardComponent ],
+      providers: [ GameContainerService ]
     })
     .compileComponents();
   });
