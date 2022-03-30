@@ -13,10 +13,9 @@ const gameContainerServiceMock = {
   }),
 }
 
-fdescribe('GameContainerComponent', () => {
+describe('GameContainerComponent', () => {
   let component: GameContainerComponent;
   let fixture: ComponentFixture<GameContainerComponent>;
-  let service: GameContainerService;
 
   beforeEach(async () => {
 
@@ -30,7 +29,6 @@ fdescribe('GameContainerComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(GameContainerComponent);
     component = fixture.componentInstance;
-    service = TestBed.inject(GameContainerService);
     fixture.detectChanges();
   });
 
