@@ -4,7 +4,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 import { CharacterPlayersService } from './characters-players.service';
 
-fdescribe('CharacterPlayersService', () => {
+describe('CharacterPlayersService', () => {
   let service: CharacterPlayersService;
 
   beforeEach(() => {
