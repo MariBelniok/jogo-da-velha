@@ -1,0 +1,13 @@
+<fieldset>
+  <label> {{ label }} </label>
+  <input
+    type="text"
+    [placeholder]="placeholder"
+    [formControlName]="name"
+  >
+  <small
+    *ngIf=" !form.get(name).valid && (form.get(name).dirty || form.get(name).touched)"
+  >
+      Escolha um personagem!
+  </small>
+</fieldset>

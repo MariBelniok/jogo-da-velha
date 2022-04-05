@@ -1,30 +1,30 @@
 
 <form [formGroup]="form" name="form" class="form">
-    <div *ngIf="loadingCharacters" class="loading-characters">
+    <section *ngIf="loadingCharacters" class="loading-characters">
         Buscando Personagens
-    </div>
+    </section>
 
-    <div *ngIf="!loadingCharacters">
+    <section *ngIf="!loadingCharacters">
         <h3>Bem vindo ao confronto dos personagens da <span>MARVEL</span> !</h3>
         <p>Escolha seu personagem favorito para iniciar o jogo: </p>
 
         <div class="inputs">
-            <div>
-                <label for="playerOne">1º Personagem: </label>
-                <input placeholder="Ex: Thor" type="text" formControlName="playerOne" name="playerOne" id="playerOne">
-                <span *ngIf="!form.get('playerOne').valid && (form.get('playerOne').dirty || form.get('playerOne').touched)" class="input-error">
-                    Escolha um personagem!
-                </span>
-            </div>
-            <div>
-                <label for="playerTwo">2º Personagem: </label>
-                <input placeholder="Ex: Hulk" type="text" formControlName="playerTwo" name="playerTwo" id="playerTwo">
-                <span *ngIf="!form.get('playerTwo').valid && (form.get('playerTwo').dirty || form.get('playerTwo').touched)" class="input-error">
-                    Escolha um personagem!
-                </span>
-            </div>
+            <app-simple-input
+              [placeholder]="'Ex: Thor'"
+              [name]="'playerOne'"
+              [form]="form"
+              [errorMessage]="'Escolha um personagem!'"
+              [label]="'1º Personagem:'"
+            ></app-simple-input>
+            <app-simple-input
+              [placeholder]="'Ex: Hulk'"
+              [name]="'playerTwo'"
+              [form]="form"
+              [errorMessage]="'Escolha um personagem!'"
+              [label]="'2º Personagem:'"
+          ></app-simple-input>
         </div>
 
         <button type="button" (click)="onStartGame()" [disabled]="!form.valid"> START </button>
-    </div>
+    </section>
 </form>
