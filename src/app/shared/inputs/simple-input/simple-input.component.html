@@ -3,11 +3,10 @@
   <input
     type="text"
     [placeholder]="placeholder"
-    [formControlName]="name"
+    (blur)="setTouched()"
+    (change)="setValue($event.target.value)"
   >
-  <small
-    *ngIf=" !form.get(name).valid && (form.get(name).dirty || form.get(name).touched)"
-  >
+  <small *ngIf="touched && !value">
       Escolha um personagem!
   </small>
 </fieldset>

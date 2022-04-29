@@ -22,9 +22,10 @@ export class CharacterPlayersFormComponent implements OnDestroy {
   constructor(
     private formBuilder: FormBuilder,
     private characterService: CharacterPlayersService
-  ) { }
+  ) {}
 
   public onStartGame() {
+    console.log(this.form.value)
     this.loadingCharacters = true;
     this.chooseRandomCharacters();
   }

@@ -1,5 +1,5 @@
 
-<form [formGroup]="form" name="form" class="form">
+<div class="form">
     <section *ngIf="loadingCharacters" class="loading-characters">
         Buscando Personagens
     </section>
@@ -12,14 +12,14 @@
             <app-simple-input
               [placeholder]="'Ex: Thor'"
               [name]="'playerOne'"
-              [form]="form"
+              [formControl]="form.controls.playerOne"
               [errorMessage]="'Escolha um personagem!'"
               [label]="'1º Personagem:'"
             ></app-simple-input>
             <app-simple-input
               [placeholder]="'Ex: Hulk'"
               [name]="'playerTwo'"
-              [form]="form"
+              [formControl]="form.controls.playerTwo"
               [errorMessage]="'Escolha um personagem!'"
               [label]="'2º Personagem:'"
           ></app-simple-input>
@@ -27,4 +27,4 @@
 
         <button type="button" (click)="onStartGame()" [disabled]="!form.valid"> START </button>
     </section>
-</form>
+</div>
